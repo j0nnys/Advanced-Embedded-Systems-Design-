@@ -1,0 +1,2 @@
+# Advanced-Embedded-Systems-Design-
+blink 8 LEDs in the extension board. There are 8 switches in the extension board. You can assign one of switches to one of the LEDs. When a switch is on, the corresponding LED blinks. When a switch is off, the corresponding LED is off. The blink rate can be changed according to the keyboard input from the host PC via Putty or Hyper terminal. There are four blink rates: 0.2s, 0.5s, 1.0s, and 2.0s. 
