@@ -16,58 +16,68 @@ char keyCode[] = {'1','2','3','4'}; // This is the array used to store the keys 
   which button of the keypad 
   was pressed
  */
-char getKey(){
+char getKey()
+{
     int i,j;
     char ch=' ';
     
-    for (i = 0; i <= 3; i++) {
+    for (i = 0; i <= 3; i++) 
+    {
         rows = i; 
-        for (j = 0; j <= 3; j++) {           
-            if (((cols ^ 0x00FF)  & (0x0001<<j)) != 0) {
+        for (j = 0; j <= 3; j++) 
+        {           
+            if (((cols ^ 0x00FF)  & (0x0001<<j)) != 0) 
+            {
                 ch = Keytable[(i * 4) + j];
             }            
         }        
     }
     return ch;
 }
-int main() {
+
+int main() 
+{
     lcd.cls();
     int a,i;
     char b = ' ';
-    while (1){
+    while (1)
+    {
         lcd.locate(0,1);
-            lcd.printf("Code:____"); 
-        for(a = 0; a < 4; a++) {
+        lcd.printf("Code:____"); 
+        for(a = 0; a < 4; a++) 
+        {
             b = getKey(); // Get the key pressed from the keypad
-            
-                switch(b){
+            switch(b)
+            {
                 case ' ':
                     a--; 
-                break;
+                    break;
                 case 'C':
-                    if (a > 0){
+                    if (a > 0)
+                    {
                         a = a-2;
                         lcd.locate(6+a, 1);    
                         lcd.putc('_');                     
                     }
-                    else if (a == 0){
+                    else if (a == 0)
+                    {
                         a--;
                     }
-                break; 
+                    break; 
                 case 'B':
                     lcd.locate(0,0);
                     lcd.printf("CE860 A1"); 
                 default:
-                    if (keyCode[i]=b){
-                    lcd.locate(5+a, 1);    
-                    lcd.putc(b);
-                    lcd.locate(0,1);
-                    lcd.printf("Code:*___"); 
-                    keyCode[a] = b;    // This stores a value in the array if a key was pressed  
+                    if (keyCode[i]=b)
+                    {
+                        lcd.locate(5+a, 1);    
+                        lcd.putc(b);
+                        lcd.locate(0,1);
+                        lcd.printf("Code:*___"); 
+                        keyCode[a] = b;    // This stores a value in the array if a key was pressed  
                     }
-                }   
-            }
+            }   
+        }
         wait(1);
     }
 }
-
